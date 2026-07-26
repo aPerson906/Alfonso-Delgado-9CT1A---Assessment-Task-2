@@ -6,29 +6,24 @@
 ### **Defining the Purpose**
 
 #### The Need
-Waking up at 2:00 AM to use the bathroom or other activities and either stubbing your toe in the dark or blinding yourself by turning on the lights.
+Waking up at 2:00 AM to use the bathroom or other activities and either stubbing your toe in the dark or blinding yourself by turning on the lights and being unable to go back to sleep.
 
 #### Proposed Solution
-We will design a light system to put in any room with an outlet which will emit light only when its dark. It'll use motion and light sensors and once distrub by movement it'll emit lights, for 30 seconds. Afterwards it'll dim again. Once it detects light again - such as from the sun or from a lightbulb - it'll turn off.
-(fix)
+We will design a lighting system that can be plugged into any room with a power outlet. The system will only activate when it is dark. It uses both motion and light sensors: when motion is detected once dark enough, the light will turn on for 30 seconds before turning back off. If the system detects sufficient light again, such as sunlight or a room light being switched on, it will automatically turn off.
 
 ### **Identify Key Actions**
 
-4 Specific actions the microcontroller needs to perform to complete this task is:
-
-- The microcontroller checks the light sensor to determine if the room is currently dark or bright.
-- If the light sensor confirms the room is dark, the microcontroller activates and monitors the motion sensor for any movement.
-- When the movement sensor detects movement in the dark, the microcontroller sends a signal to turn on the light.
-- The microcontroller starts a 30-second timer the moment motion is detected, keeping the LED on for that duration, and then switches the LED off automatically once the time expires
-(fix)
-
-List at least 3-5 specific actions which your microcontroller needs to perform to complete the task. These should be clear, simple actions like detection, input, output or triggering an event (e.g. sound or lights).
+- The microcontroller reads the light sensor to determine whether the room is dark or bright.
+- If the room is dark, the microcontroller monitors the motion sensor for movement.
+- When movement is detected in the dark, the microcontroller sends a signal to switch the LED light on.
+- The microcontroller starts a 30-second timer and keeps the LED on while the timer is running.
+- After 30 seconds, the microcontroller switches the LED off. If the light sensor detects enough light (such as sunlight or another light on), the microcontroller keeps the LED off until the room becomes dark again.
 
 
 
 ### **Functional Requirements**
 
-The machine requires    
+The machine requires:    
 - Light Sensor Input: If light levels are high (daylight or other lights on), the system must remain in sleep mode and keep the LED output off.
 - Motion Sensor Input: If the room is dark and the PIR sensor detects human movement, the system must trigger the LED turning on event.
 - LED Output: When there's motion detection in the dark, the LED must instantly turn on and project a gentle glow.
@@ -36,9 +31,6 @@ The machine requires
 - Gentle glow must be 450 lumens to keep brightness down not to affect users eyes or senses. (otherwise could get flashed)
 
 
-A functional requirement is the action or behavior the robot needs to perform.
-For each key action, write a functional requirement that clearly states what the robot must do. These should be written in a clear and concise manner.
-(fix)
 
 
 ### **Test Cases**
