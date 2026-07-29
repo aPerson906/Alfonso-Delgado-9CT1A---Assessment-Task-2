@@ -54,16 +54,15 @@ Identify the expected outputs (e.g. motor movement, sound, display messages).
 
 
 ### **Non-Functional Requirements**
-`
 
-These are requirements that focus on how well the robot will perform in completing the task, rather than the completing of the task itself. Consider the following: 
+**Efficiency**
+The system should only use power when needed, not wasting energy unecessarily. It should stay off when there is another light ssource present and turn on only when it's dark and motion is detected.
 
-Efficiency
+**Response Time**
+The light should switch on immediantly (roughly within ______) after motion is detected in a dark room.
 
-Response Time
-
-Accuracy
-
+**Accuracy**
+The system should reliably detect movement in only the dark and emit light when both conditions are met (movement and darkness).
 
 
 
