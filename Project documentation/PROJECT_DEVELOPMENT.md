@@ -71,9 +71,42 @@ The system should reliably detect movement in only the dark and emit light when 
 
 
 ## ***Algorithms***
-Pseudocode and Flowchart development (include images for Flowchart)
 
-(insert flowchart and pseudocode)
+### Flow chart
+![Computing Tech Mind Map](images/Flow chart.png)
+(include images)
+
+### Pseudocode
+
+BEGIN light_levels()
+    READ light levels
+    IF light on = yes:
+        light_levels()
+    ELSE
+        motion_detect()
+
+BEGIN motion_detect()
+    READ motion
+    IF motion = yes
+        OUTPUT LED on
+        timer()
+    ELSE 
+        light_levels()
+
+BEGIN timer()
+    READ seconds
+    IF seconds = 30 THEN
+        OUTPUT LED off
+        light_levels()
+    ELSE 
+        OUTPUT +1 second
+        timer()
+
+BEGIN 
+    light_levels()
+END
+
+
 
 
 ## ***Development and Intergration***
@@ -100,4 +133,4 @@ Provide an individual project evaluation in relation to peer feedback, achieveme
 
 ### **Peer Evaluation - PMI**
 
-### **Final EValuation**
+### **Final Evaluation**
