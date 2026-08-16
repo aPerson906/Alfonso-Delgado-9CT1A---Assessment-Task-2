@@ -38,18 +38,10 @@ The machine requires:
 
 | Test Case | Input     | Expected Output   |
 |---------- |---------- |----------------   |
-|Other light source is on and motion sensor detects movement.|Light sensor reads light source.|No light appears from the machine.|
-|No other light source is in the room, motion sensor detetcs movement.|Light sensor reads light source, motion sensor reads motion.|Light appears from the machine.|
-|Machine emits light, motion sensor stops detecting motion.|Motion sensor stops reading motion, stopwatch starts.|Emitted light turns off after 30 seconds. 
-(fix)
+|Other light source is on and motion sensor detects movement.|Light sensor detects that the room is bright.|LED stays off.|
+|No other light source is in the room, motion sensor detects movement.|Light sensor detects that the room is dark, motion sensor detects movement.|LED turns on.|
+|Machine emits light, and 30 seconds have passed.|30 second timer is done.|LED turns off. 
 
-
-For each functional requirement, develop tese cases for it. A test case is simply an outline of expected function, input and outputs, so that we can test against it later on when developing prototypes.
-
-Identify the inputs (e.g. sensor data, button presses).
-
-Identify the expected outputs (e.g. motor movement, sound, display messages).
-(table)
 
 
 
@@ -59,10 +51,10 @@ Identify the expected outputs (e.g. motor movement, sound, display messages).
 The system should only use power when needed, not wasting energy unecessarily. It should stay off when there is another light ssource present and turn on only when it's dark and motion is detected.
 
 **Response Time**
-The light should switch on immediantly (roughly within ______) after motion is detected in a dark room.
+The light should switch on immediantly (roughly within 1-2 seconds) after motion is detected in a dark room.
 
 **Accuracy**
-The system should reliably detect movement in only the dark and emit light when both conditions are met (movement and darkness).
+The system should reliably detect movement in only the dark and emit light when both conditions are met (movement and darkness). It should also turn off exactly in or roughly 30 seconds.
 
 
 
@@ -73,38 +65,50 @@ The system should reliably detect movement in only the dark and emit light when 
 ## ***Algorithms***
 
 ### Flow chart
-![Computing Tech Mind Map](images/Flow chart.png)
-(include images)
+![Entire flowchart](images/flowchart.png)
+
 
 ### Pseudocode
 
-BEGIN light_levels()
-    READ light levels
-    IF light on = yes:
-        light_levels()
-    ELSE
-        motion_detect()
 
-BEGIN motion_detect()
-    READ motion
-    IF motion = yes
+    BEGIN 
+        REPEAT CONTIONOUSLY
+            CALL light()
+        END REPEAT
+
+    END
+
+
+    BEGIN light()
+        READ light sensor
+        IF light levels <= 50 THEN
+            CALL motion()
+        ELSE
+            OUTPUT LED off
+        END IF
+    END light()
+
+
+    BEGIN motion()
+        READ motion sensor
+        IF motion is detected THEN
+            CALL timer()
+        ELSE 
+            OUTPUT LED off
+        END IF
+    END motion()
+
+
+    BEGIN timer()
         OUTPUT LED on
-        timer()
-    ELSE 
-        light_levels()
-
-BEGIN timer()
-    READ seconds
-    IF seconds = 30 THEN
+        SET seconds = 0
+        WHILE seconds < 30
+            WAIT 1 second
+            ADD 1 to seconds
+        END WHILE
         OUTPUT LED off
-        light_levels()
-    ELSE 
-        OUTPUT +1 second
-        timer()
+    END timer()
 
-BEGIN 
-    light_levels()
-END
 
 
 
