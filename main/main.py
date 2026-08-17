@@ -1,4 +1,4 @@
-from machine import Pin, ADC
+from machine import Pin, ADC, time_pulse_us
 import time
 
 
@@ -52,7 +52,7 @@ def motion_detect():
     starting_distance = distance()
     while True:
         current_distance = distance()
-        if current_distance != starting_distance:
+        if current_distance > starting_distance + 5:
             seconds()
         else:
             led.off()
