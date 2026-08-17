@@ -3,15 +3,18 @@ import time
 
 
 light_sensor = ADC(26) # LDR (light sensor) 
-motion_sensor = Pin(15, Pin.IN) # PIR (motion sensor)
+trig = Pin(15, Pin.OUT)  # TRIG
+echo = Pin(17, Pin.IN)   # ECHO
 led = Pin(16, Pin.OUT) # LED (light)
+button = Pin(14, Pin.IN, Pin.PULL_UP)  # Button
+system_on = True # The light starts turned on
 
 
 #LIght sensor function
 def light():
     light_level = light_sensor.read_u16()  
 
-    if light_level <= 50: # Reads light levels if they are above 50 then move onto motion detect func
+    if light_level <= 50: # Reads light levels if they are above 50 then move onto motion detect function
         motion_detect()
     else:
         led.off()   
@@ -27,15 +30,39 @@ def seconds():
 
     led.off()
 
+# distance function
+def distance():
+    # Send a short signal to the ultrasonic sensor
+    trig.value(0)
+    time.sleep_us(2)
+    trig.value(1)
+    time.sleep_us(10)
+    trig.value(0)
+
+    # Measure how long the echo takes
+    duration = time_pulse_us(echo, 1)
+
+    # Convert the time into distance
+    distance = (duration * 0.0343) / 2
+
+    return distance
 
 # motion_detect function
 def motion_detect():
-    if motion_sensor.value() == 1:   # #If motion_sensor value = 1 then motion is detected
-        seconds()
-    else:
-        led.off()
+    starting_distance = distance()
+    while True:
+        current_distance = distance()
+        if current_distance != starting_distance:
+            seconds()
+        else:
+            led.off()
 
 # Main program
 while True:
-    light()
-    time.sleep(0.1)
+    if button.value() == 0: # Check if the button is pressed
+        system_on = not system_on
+        time.sleep(0.5)  # Short delay so it doesn't press twice
+    if system_on:
+        light()  # light function
+    else:
+        led.off()  # Turn off the LED   
