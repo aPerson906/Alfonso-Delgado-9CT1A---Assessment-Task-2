@@ -114,7 +114,44 @@ The system should reliably detect movement in only the dark and emit light when 
 
 
 ## ***Development and Intergration***
-Write your first program and include it as a code block in Markdown after you have first successfully run a program (even if it does not achieve the task set out to do). 
+***First attempt***
+
+```Python 
+from machine import Pin, ADC
+import time
+
+light_sensor = ADC(26) # LDR (light sensor) 
+motion_sensor = Pin(15, Pin.IN) # PIR (motion sensor)
+led = Pin(16, Pin.OUT) # LED (light)
+led = Pin(16, Pin.OUT) # LED (light)
+#LIght sensor function
+
+def light():
+    light_level = light_sensor.read_u16()  
+    if light_level <= 50: # Reads light levels if they are above 50 then move onto motion detect func
+        motion_detect()
+    else:
+        led.off()
+
+# timer funtion 
+def seconds():
+    led.on()
+    timer = 0
+    while timer < 30: #while the timer is less than 30 add 1 more second until it is 30 or above then turn LED off
+        time.sleep(1) # 1 second delay
+        timer += 1
+    led.off()
+# motion_detect function
+def motion_detect():
+    if motion_sensor.value() == 1:   # #If motion_sensor value = 1 then motion is detected
+        seconds()
+    else:
+        led.off()
+# Main program
+while True:
+    light()
+    time.sleep(0.1)
+ ```
 
 
 ## ***Testing and Debugging***
@@ -124,11 +161,32 @@ Copy your code from every subsequent test into a code block in Markdown. You wil
 Choose a test case
 Write a brief outline of what you need to do to meet the requirements of the test case.
 
-### **Evaluate**
+### **Outline Plan**
 
-Adjust and test your code until you meet the requirements of the test case.
-Evaluate your process.
+### **Final Product**
+For your final submission, you will need to:
 
+Film a video of your final product working. Include this in your Github repo if it fits, or submit separately to Google Classroom.
+
+Include all final Thonny / VS Code files and folder structure in your Github, all test cases in your documentation, and include all commits. 
+
+### **Evaluation of Process**
+
+Evaluate your process in solving this test case. 
+
+Consider the following in your answer: 
+
+How successful were you in meeting the test case requirements?
+
+What steps did you take to identify and fix errors?
+
+What went particularly well?
+
+What challenged you?
+
+What areas of your program could be improved based on the test results?
+
+It is recommended you write 3-4 sentences for each test case. 
 
 ## ***Evaluation***
 Provide peer evaluations from other team members.
@@ -137,4 +195,15 @@ Provide an individual project evaluation in relation to peer feedback, achieveme
 
 ### **Peer Evaluation - PMI**
 
+
+Plus Minus Interesting
+
+
 ### **Final Evaluation**
+
+
+
+
+
+
+

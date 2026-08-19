@@ -31,9 +31,10 @@ def seconds():
     led.off()
 
 # distance function
+# learnt from (insert link)
 def distance():
     # Send a short signal to the ultrasonic sensor
-    trig.value(0)
+    trig.value(0) 
     time.sleep_us(2)
     trig.value(1)
     time.sleep_us(10)
