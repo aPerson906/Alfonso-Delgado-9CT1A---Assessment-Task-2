@@ -195,13 +195,48 @@ Provide an individual project evaluation in relation to peer feedback, achieveme
 
 ### **Peer Evaluation - PMI**
 
+|Plus|Minus|Interesting|
+|---------- |---------- |----------------   |
+|-      | -          | - hi                 |
+|       |            |                      |
+Reviewed by:
 
-Plus Minus Interesting
+
+
+
+
+|Plus|Minus|Interesting|
+|---------- |---------- |----------------   |
+|- The LED is quite bright and allows for high visibility within the space  |  The device's wiring seems comlicated and messy|The features of the device itself seems to work quite well it would be better if there was a comparison to see it working within bright and dark areas to obtain a proper comparasion|
+|The response time of the device is rapid and responsive to objects within feasible distance| The LED turns off at a seemingly random time so it might come as a shock to see the device just turn off, add and indicator to when it will turn off perhaps.| Although messy the device seemed comprehensive and cohesive so that it was able to be easily used to fit its purpose.|
+Reviewed by: Pradhyot Narasimha
+
+
+
+
+ 
+
+
+
+
+|Plus|Minus|Interesting|
+|---------- |---------- |----------------   |
+|-      | -          | - hi                 |
+|       |            |   - good stufff                   |
+Reviewed by: 
+
 
 
 ### **Final Evaluation**
 
+Each should include at least one paragraph in response:
 
+Evaluate your Final Test in Relation to Functional Criteria
+Evaluate your Final Test in Relation to Non-Functional Criteria
+Evaluate your Final Performance in Relation to the Identified Need
+Evaluate your Project in Relation to Project Management
+Evaluate your Project in Relation to Peer Feedback.
+Justify Future Improvements you could make to your Final Product
 
 
 
